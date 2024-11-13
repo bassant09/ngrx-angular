@@ -1,0 +1,32 @@
+<!-- application.component.html -->
+
+<div *ngIf="loading$ | async; else content">
+  <p>Loading applications...</p>
+  
+</div>
+
+<ng-template #content>
+  <div *ngIf="error$ | async as error; else noError">
+    <p>Error: {{ error }}</p>
+  </div>
+
+  <ng-template #noError>
+    <div *ngIf="applications$ | async as applications; else noApplications">
+      <ul>
+        <li *ngFor="let application of applications">
+          {{ application.name }}
+        </li>
+      </ul>
+    </div>
+
+    <ng-template #noApplications>
+      <p>No applications available.</p>
+    </ng-template>
+  </ng-template>
+
+  <!-- Toast notifications -->
+
+  <!-- Buttons for manual toast testing -->
+  <!-- <button class="btn btn-danger" (click)="showToast(false)">Show Info Toast</button>
+  <button class="btn btn-primary" (click)="showToast(true)">Show Success Toast</button> -->
+</ng-template>
