@@ -110,18 +110,15 @@ export class ApplicationEffects {
     this.actions$.pipe(
       ofType(ApplicationActions.loadApplications),
       tap(() => {
-        // Set loading to true when starting the load
        this.store.dispatch(LoadingActions.setLoading({ loading: true }));
       }),
       mergeMap(() =>
         this.applicationService.fetchApplications().pipe(
           map((applications) => {
-            // Set loading to false after success
             this.store.dispatch(LoadingActions.setLoading({ loading: false }));
             return ApplicationActions.loadApplicationsSuccess({ applications });
           }),
           catchError((error) => {
-            // Set loading to false after failure
            this.store.dispatch(LoadingActions.setLoading({ loading: false }));
             return of(ApplicationActions.loadApplicationsFailure({ error }));
           })

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FeaturesRoutingModule } from './features-routing.module';
 import { FeaturesComponent } from './features.component';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { FeaturesComponent } from './features.component';
   imports: [
     CommonModule,
     FeaturesRoutingModule,
+    AuthModule,
 
   ]
 })

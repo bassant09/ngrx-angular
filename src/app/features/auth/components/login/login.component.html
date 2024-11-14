@@ -1,0 +1,45 @@
+<div class="p-5">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          formControlName="email"
+          aria-describedby="emailHelp"
+        />
+        <div *ngIf="formGroup.get('email')?.invalid && formGroup.get('email')?.touched" class="text-danger">
+          <small *ngIf="formGroup.get('email')?.errors?.['required']">Email is required.</small>
+          <small *ngIf="formGroup.get('email')?.errors?.['email']">Invalid email address.</small>
+        </div>
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          formControlName="password"
+        />
+        <div *ngIf="formGroup.get('password')?.invalid && formGroup.get('password')?.touched" class="text-danger">
+          <small>Password is required.</small>
+        </div>
+      </div>
+  
+      <div class="mb-3 form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="exampleCheck1"
+          formControlName="refreshToken"
+        />
+        <label class="form-check-label" for="exampleCheck1">Keep me logged in</label>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">Submit</button>
+    </form>
+  </div>
+  

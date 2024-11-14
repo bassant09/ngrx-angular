@@ -90,3 +90,10 @@ export const GET_EI_AMBASSADORS_QUERY = gql`
     }
   }
 `;
+export const USER_LOGIN = gql`
+    mutation UserLogin($email: String, $password: String, $educational_institution_id: Int) {
+      userLogin(email: $email, password: $password, educational_institution_id: $educational_institution_id) {
+        access_token
+      }
+    }
+  `;

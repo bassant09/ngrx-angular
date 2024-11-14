@@ -30,11 +30,10 @@ export class GlobalEffects {
                       detail: 'Applications loaded successfully!',
                      
                     });
-                  //  this.messageService.clear();
-  
-           
-             
-           
+                    setTimeout(() => {
+                      this.messageService.clear();
+
+                    }, 3000); 
           //  this.messageService.clear()
           } 
           else {
@@ -46,7 +45,10 @@ export class GlobalEffects {
               summary: 'Loading',
               detail: 'Loading applications...'
             });
+            setTimeout(() => {
+              this.messageService.clear();
 
+            }, 3000);
           }
         })
       ),
